@@ -24,13 +24,13 @@ Finally, it attempts to re-execute the function with the fixed code provided by 
 #### Installation
 Clone the repository:
 
-``
+```
 git clone https://github.com/yourusername/tinyagi-healer.git
 ``
 
 Navigate to the project directory:
 
-``
+```
 cd tinyagi-healer
 ``
 
