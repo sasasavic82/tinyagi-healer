@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from "openai";
 
 export type HealingOptions = {
-    source: string;
+    code: string;
     error: string;
 }
 
@@ -37,13 +37,7 @@ export const callOpenAI = async (prompt: string): Promise<string | undefined> =>
             stop: undefined,
             n: 1
         });
-
-        console.log(response.data.choices[0].message?.content.trim());
-
-        if (response.data.choices)
-            return response.data.choices[0].message?.content.trim()
-        else
-            throw new Error("No data");
+        return response.data.choices ? response.data.choices[0].message?.content.trim() : undefined
     } catch(e) {
         console.error(e);
         throw e;
@@ -52,20 +46,20 @@ export const callOpenAI = async (prompt: string): Promise<string | undefined> =>
 
 export const tinyAgiHeal = async (options: HealingOptions): Promise<HealResponse> => {
     let prompt = `
-    You are worlds greatest most sophisticated code fixing automated system. From now on, I will provide a function source and the error, and you will fix the function. The format that will be provided is:
+    You are worlds greatest most sophisticated code fixing automated system. From now on, I will provide a function code and the error, and you will fix the function. The format that will be provided is:
 
-    ## Source:
-    <source goes here>
+    >> Code:
+    <code goes here>
     
-    ## Error:
+    >> Error:
     <error goes here>
     
-    You will only respond with the new modified Source. The issue is:
+    You will only respond with the new modified Code. The issue is:
     
-    ## Source:
-    ${options.source}
+    >> Code:
+    ${options.code}
 
-    ## Error:
+    >> Error:
     ${options.error}
  `;
 

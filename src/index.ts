@@ -5,21 +5,24 @@ import { tinyAgiHeal } from "./tinyagi";
 
 
 export const healer = async (fn: Function, tries: number, args: any[]): Promise<Function> => {
-    console.log("tries left: ", tries);
     try {
         return fn(...args);
     } catch(e: any) {
+        console.log("Encountered error: ", e.message);
         if(tries <= 0)
             throw Error("No more tries left.");
-        
-        tries--;
+
+        console.log(`Healing... ${tries} tries left.`);
 
         let _healResponse = await tinyAgiHeal({
-            source: fn.toString(),
+            code: fn.toString(),
             error: e.stack.toString()
-        });
-        fn = new Function(..._healResponse.arguments, _healResponse.function);
-        return healer(fn, tries, args)
+        });;
+
+        tries--;
+
+        return healer(
+            new Function(..._healResponse.arguments, _healResponse.function), tries, args)
     }
 }
 
