@@ -43,7 +43,8 @@ npm install
 Set up your GPT API key and org as an environment variable:
 
 ```
-export GPT_API_KEY=your_api_key_here
+export OPENAI_API_KEY=your_api_key_here
+export OPENAPI_ORGANIZATION_ID=your_org_id
 ```
 
 or create a .env file with.
