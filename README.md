@@ -26,32 +26,31 @@ Clone the repository:
 
 ```
 git clone https://github.com/yourusername/tinyagi-healer.git
-``
+```
 
 Navigate to the project directory:
 
 ```
 cd tinyagi-healer
-``
+```
 
 Install the required dependencies:
 
-``
+```
 npm install
-``
+```
 
 Set up your GPT API key and org as an environment variable:
 
-``
+```
 export GPT_API_KEY=your_api_key_here
-``
+```
 
 or create a .env file with.
 
-``
 
 ### Usage
-
+TBA
 
 ### Configuration
 You can configure the behavior of TinyAGI-Healer by modifying the following settings:
