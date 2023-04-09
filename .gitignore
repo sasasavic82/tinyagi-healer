@@ -67,3 +67,4 @@ nohup.out
 
 build
 build/*
+./build
