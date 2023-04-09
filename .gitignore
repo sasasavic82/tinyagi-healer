@@ -64,3 +64,6 @@ nohup.out
 *.env
 .env
 *env
+
+build
+build/*
